@@ -1,4 +1,4 @@
-# Alacademy Booking System
+# Booking System
 
 ## Project Description
 
