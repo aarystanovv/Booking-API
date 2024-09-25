@@ -19,7 +19,11 @@ from django.urls import path
 from booking import views
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
 urlpatterns = [
+    path('sentry-debug/', trigger_error),
     path('admin/', admin.site.urls),
     path('resources/', views.resource_list, name='resource-list'),
     path('bookings/', views.booking_list, name='booking-list'),
