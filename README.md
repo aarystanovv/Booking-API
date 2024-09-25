@@ -86,6 +86,113 @@ To enable error tracking and monitoring with Sentry, follow these steps:
 
 3. Test Sentry integration by triggering an error in your application. You can use a test URL (e.g., `/sentry-debug/`) that raises an exception to verify that Sentry captures errors correctly.
 
+## API Endpoints
+
+The system provides a set of REST API endpoints to interact with the booking system. Below is a list of the main endpoints available:
+
+### Booking Endpoints
+
+1. **List All Resources**
+
+    - **URL**: `/resources/`
+    - **Method**: `GET`
+    - **Description**: Retrieves a list of all available resources for booking.
+    - **Response Example**:
+        ```json
+        [
+            [
+                {
+                    "id": 1,
+                    "name": "Conference Room A",
+                    "max_slots": 4
+                },
+                {
+                    "id": 2,
+                    "name": "Tennis Court 1",
+                    "max_slots": 2
+                },
+                {
+                    "id": 3,
+                    "name": "Projector",
+                    "max_slots": 1
+                }
+            ]
+        ]
+        ```
+
+2. **List All Bookings**
+
+    - **URL**: `/bookings/`
+    - **Method**: `GET`
+    - **Description**: Retrieves a list of all bookings with their statuses.
+    - **Response Example**:
+        ```json
+        [
+            {
+                "id": 1,
+                "resource": "Conference Room",
+                "start_time": "2024-09-25T10:00:00Z",
+                "end_time": "2024-09-25T12:00:00Z",
+                "status": "active"
+            },
+            {
+                "id": 2,
+                "resource": "Projector",
+                "start_time": "2024-09-25T14:00:00Z",
+                "end_time": "2024-09-25T16:00:00Z",
+                "status": "completed"
+            }
+        ]
+        ```
+
+3. **Create a New Booking**
+
+    - **URL**: `/bookings/create/`
+    - **Method**: `POST`
+    - **Description**: Creates a new booking for a specified resource.
+    - **Request Body Example**:
+        ```json
+        {
+            "resource": 1,
+            "user": 3,
+            "start_time": "2024-09-26T10:00:00Z",
+            "end_time": "2024-09-26T12:00:00Z"
+        }
+        ```
+    - **Response Example**:
+        ```json
+        {
+            "id": 3,
+            "resource": "Projector",
+            "start_time": "2024-09-26T10:00:00Z",
+            "end_time": "2024-09-26T12:00:00Z",
+            "status": "active",
+            "user": 3,
+            "resource": 1
+        }
+        ```
+
+4. **Cancel a Booking**
+
+    - **URL**: `/bookings/cancel/<int:booking_id>/`
+    - **Method**: `POST`
+    - **Description**: Cancels an active booking based on the booking ID.
+    - **Response Example**:
+        ```json
+        {
+            "message": "Booking cancelled and next user notified."
+        }
+        ```
+
+### API Documentation
+
+Swagger and Redoc are available for testing and exploring the API.
+
+- **Swagger UI**: `/api/docs/`
+- **Redoc**: `/api/docs/redoc/`
+- **OpenAPI Schema**: `/api/schema/`
+
+
 ### Cloning the Repository
 
 First, clone this repository:
