@@ -17,6 +17,7 @@ Alacademy Booking System is a web application developed with Django that allows 
 - Django REST Framework
 - Celery (for background task processing)
 - Redis (as the message broker for Celery)
+- Sentry (for error tracking and monitoring)
 
 ## Installation
 
