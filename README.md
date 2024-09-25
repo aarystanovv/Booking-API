@@ -141,6 +141,13 @@ The system provides a set of REST API endpoints to interact with the booking sys
                 "start_time": "2024-09-25T14:00:00Z",
                 "end_time": "2024-09-25T16:00:00Z",
                 "status": "completed"
+            },
+           {
+                "id": 3,
+                "resource": "Conference Room",
+                "start_time": "2024-09-25T11:00:00Z",
+                "end_time": "2024-09-25T14:00:00Z",
+                "status": "queue"
             }
         ]
         ```
